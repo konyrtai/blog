@@ -23,9 +23,9 @@ This blog is my space to share:
 
 ## Connect With Me
 
-- **LinkedIn**: [linkedin.com/in/alibekkonyrtai](https://linkedin.com/in/alibekkonyrtai)
-- **GitHub**: [github.com/alibekkonyrtai](https://github.com/alibekkonyrtai)
-- **Email**: [alibek@konyrtai.dev](mailto:alibek@konyrtai.dev)
+- **LinkedIn**: [https://www.linkedin.com/in/konyrtai](https://www.linkedin.com/in/konyrtai)
+- **GitHub**: [github.com/konyrtai](https://github.com/konyrtai)
+- **Email**: [konyrtai.alibek@gmail.com](mailto:konyrtai.alibek@gmail.com)
 
 ## Resume
 
