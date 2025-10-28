@@ -1,8 +1,9 @@
-name: Deploy Hugo to GitHub Pages
+name: Deploy Hugo site to Pages
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -11,54 +12,52 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.121.2/hugo_extended_0.121.2_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb          
+      - name: Install Dart Sass
+        run: sudo snap install dart-sass
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          submodules: recursive
           fetch-depth: 0
-          # submodules не нужен, PaperMod идёт как Hugo Module
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: '0.149.0'
-          extended: true
-
-      # Кешируем Hugo Modules (ускоряет сборку)
-      - name: Cache Hugo modules
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cache/hugo
-            ~/go/pkg/mod
-          key: ${{ runner.os }}-hugo-${{ hashFiles('**/go.mod', 'hugo.toml', 'hugo.yaml', 'hugo.json') }}
-          restore-keys: |
-            ${{ runner.os }}-hugo-
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-
-      - name: Build
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v4
+      - name: Install theme
         run: |
-          hugo --gc --minify
-          # --gc чистит мусор, советую для CI
-
-      - name: Upload Pages artifact
+          git submodule update --init --recursive --depth=1
+      - name: Build with Hugo
+        env:
+          HUGO_VERSION: 0.121.2
+        run: |
+          hugo \
+            --gc \
+            --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/"          
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
 
   deploy:
-    needs: build
-    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

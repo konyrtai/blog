@@ -1,5 +1,5 @@
-module blog
+module github.com/alibekkonyrtai/blog
 
-go 1.22.5
+go 1.21
 
-require github.com/adityatelange/hugo-PaperMod v0.0.0-20251026154251-1cf53273c3ba // indirect
+require github.com/adityatelange/hugo-PaperMod v0.0.0-20241201120000-000000000000 // indirect
