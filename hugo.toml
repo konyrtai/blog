@@ -1,6 +1,7 @@
 baseURL = "https://konyrtai.github.io/blog/"
 title = "Alibek Konyrtai — Blog"
 defaultContentLanguage = "en"
+canonifyURLs = true
 pagination.pagerSize = 10
 enableRobotsTXT = true
 
