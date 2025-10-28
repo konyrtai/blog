@@ -28,9 +28,9 @@ Here you'll find articles covering various aspects of software development:
 
 ## Connect With Me
 
-- **LinkedIn**: [linkedin.com/in/alibekkonyrtai](https://linkedin.com/in/alibekkonyrtai)
-- **GitHub**: [github.com/alibekkonyrtai](https://github.com/alibekkonyrtai)
-- **Email**: [alibek@konyrtai.dev](mailto:alibek@konyrtai.dev)
+- **LinkedIn**: [linkedin.com/in/konyrtai](https://linkedin.com/in/konyrtai)
+- **GitHub**: [github.com/konyrtai](https://github.com/konyrtai)
+- **Email**: [konyrtai.alibek@gmail.com](mailto:konyrtai.alibek@gmail.com)
 
 ---
 

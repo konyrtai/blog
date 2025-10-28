@@ -1,4 +1,4 @@
-module github.com/alibekkonyrtai/blog
+module github.com/konyrtai/blog
 
 go 1.21
 

@@ -62,7 +62,7 @@ theme = 'PaperMod'
   Content = "Software Developer passionate about creating innovative solutions and sharing knowledge through programming insights."
 
 [params.editPost]
-  URL = "https://github.com/alibekkonyrtai/blog/tree/main/content"
+  URL = "https://github.com/konyrtai/blog/tree/main/content"
   Text = "Suggest Changes"
   appendFilePath = true
 

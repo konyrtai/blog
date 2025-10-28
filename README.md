@@ -20,7 +20,7 @@ A personal blog built with Hugo and PaperMod theme, featuring programming posts,
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/alibekkonyrtai/blog.git
+git clone https://github.com/konyrtai/blog.git
 cd blog
 ```
 
@@ -62,6 +62,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## Contact
 
-- **Email**: alibek@konyrtai.dev
-- **LinkedIn**: [linkedin.com/in/alibekkonyrtai](https://linkedin.com/in/alibekkonyrtai)
-- **GitHub**: [github.com/alibekkonyrtai](https://github.com/alibekkonyrtai)
+- **Email**: konyrtai.alibek@gmail.com
+- **LinkedIn**: [linkedin.com/in/konyrtai](https://linkedin.com/in/konyrtai)
+- **GitHub**: [github.com/konyrtai](https://github.com/konyrtai)
