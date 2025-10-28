@@ -1,4 +1,4 @@
-baseURL = "https://example.com/"
+baseURL = "https://konyrtai.github.io/blog/"
 title = "Alibek Konyrtai — Blog"
 defaultContentLanguage = "en"
 pagination.pagerSize = 10
