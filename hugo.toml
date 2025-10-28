@@ -1,16 +1,15 @@
-baseURL = "https://konyrtai.github.io/blog/"
+baseURL = "https://www.konyrtai.com/"
 title = "Alibek Konyrtai — Blog"
+languageCode = "en"
 defaultContentLanguage = "en"
 canonifyURLs = true
 pagination.pagerSize = 10
 enableRobotsTXT = true
 
-# Taxonomies
 [taxonomies]
   category = "categories"
   tag = "tags"
 
-# Меню (header)
 [menu]
   [[menu.main]]
     name = "Blog"
@@ -29,7 +28,6 @@ enableRobotsTXT = true
     url = "/about/"
     weight = 40
 
-# PaperMod params
 [params]
   env = "production"
   description = "Software Developer"
@@ -43,7 +41,6 @@ enableRobotsTXT = true
   ShowToc = false
   HideFooter = true
 
-# Импорт PaperMod как модуля
 [module]
   [[module.imports]]
     path = "github.com/adityatelange/hugo-PaperMod"

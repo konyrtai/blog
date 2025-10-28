@@ -2,15 +2,16 @@ name: Deploy Hugo to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-concurrency: pages
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -19,8 +20,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: true
           fetch-depth: 0
+          # submodules не нужен, PaperMod идёт как Hugo Module
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -28,8 +29,24 @@ jobs:
           hugo-version: '0.149.0'
           extended: true
 
+      # Кешируем Hugo Modules (ускоряет сборку)
+      - name: Cache Hugo modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/hugo
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-hugo-${{ hashFiles('**/go.mod', 'hugo.toml', 'hugo.yaml', 'hugo.json') }}
+          restore-keys: |
+            ${{ runner.os }}-hugo-
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
       - name: Build
-        run: hugo --minify
+        run: |
+          hugo --gc --minify
+          # --gc чистит мусор, советую для CI
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
