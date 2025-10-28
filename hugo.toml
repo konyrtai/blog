@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://konyrtai.github.io/blog/"
 title = "Alibek Konyrtai — Blog"
 languageCode = "en"
 defaultContentLanguage = "en"
