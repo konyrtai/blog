@@ -1,25 +1,48 @@
-name: Build and Deploy
+name: Deploy Hugo to GitHub Pages
+
 on:
   push:
     branches:
       - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency: pages
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    concurrency: ci-${{github.ref}}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Configure Node
-        uses: actions/setup-node@v1
+        uses: actions/checkout@v4
         with:
-          node-version: '12.18.4'
+          submodules: true
+          fetch-depth: 0
 
-      - name: Install
-        run: |
-          npm ci
-          npm run build
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.134.2'
+          extended: true
 
+      - name: Build
+        run: hugo --minify
 
-      
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
